@@ -1,16 +1,18 @@
 {
   "name": "imaginate",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.17",
+    "express": "^4.21.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "swiper": "^11.2.6",
