@@ -1,4 +1,6 @@
 import * as React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 
 type SlideProps = {
     image: string;
@@ -8,18 +10,56 @@ type SlideProps = {
 
 const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
     return (
-        <div className="h-screen flex flex-row">
-            <div className="">
-                <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
+        <>
+            {/* Desktop layout: both parts side-by-side */}
+            <div className="hidden lg:flex h-screen">
+                <div className="w-1/2">
+                    <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
+                </div>
+                <div className="w-1/2 flex items-start pt-10">
+                    <div className="p-4">
+                        {paragraphs.map((text, index) => (
+                            <p
+                                key={index}
+                                className="font-serif text-xl text-gray-700 p-4 pr-10 ml-12 max-w-[52ch]"
+                            >
+                                {text}
+                            </p>
+                        ))}
+                    </div>
+                </div>
             </div>
-            <div className="max-w-2/3">
-                {paragraphs.map((text) => (
-                <p className="font-serif text-xl text-gray-700 p-4 relative top-12 pr-10 ml-12 w-[52ch]">
-                    {text}
-                </p>
-                ))}
+
+            {/* Mobile layout: use a nested Swiper */}
+            <div className="lg:hidden h-screen">
+                <Swiper
+                    modules={[Navigation]}
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    navigation
+                >
+                    <SwiperSlide>
+                        <div className="h-screen flex items-start pt-10">
+                            <div className="p-1">
+                                {paragraphs.map((text, index) => (
+                                    <p
+                                        key={index}
+                                        className="font-serif text-[16pt] md:text-[20pt] text-gray-700 p-1 pr-10 ml-12"
+                                    >
+                                        {text}
+                                    </p>
+                                ))}
+                            </div>
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <div className="h-screen">
+                            <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
+                        </div>
+                    </SwiperSlide>
+                </Swiper>
             </div>
-    </div>
+        </>
     );
 }
 export default Slide;
