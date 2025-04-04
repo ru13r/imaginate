@@ -43,12 +43,12 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
                     fadeEffect={{crossFade: true}}
                 >
                     <SwiperSlide>
-                        <div className="h-dvh flex items-start pt-10">
-                            <div className="p-1">
+                        <div className="flex items-start">
+                            <div>
                                 {paragraphs.map((text, index) => (
                                     <p
                                         key={index}
-                                        className="font-serif text-lg lg:text-xl text-gray-700 p-1 pr-10 ml-12"
+                                        className="font-serif md:text-2xl text-gray-700 p-6 m-auto"
                                     >
                                         {text}
                                     </p>
