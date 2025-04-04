@@ -1,6 +1,5 @@
 import * as React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 
 type SlideProps = {
     image: string;
@@ -12,7 +11,7 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
     return (
         <>
             {/* Desktop layout: both parts side-by-side */}
-            <div className="hidden lg:flex h-screen">
+            <div className="hidden lg:flex h-dvh">
                 <div className="w-1/2">
                     <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
                 </div>
@@ -31,20 +30,18 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
             </div>
 
             {/* Mobile layout: use a nested Swiper */}
-            <div className="lg:hidden h-screen">
+            <div className="h-dvh lg:hidden">
                 <Swiper
-                    modules={[Navigation]}
                     spaceBetween={0}
                     slidesPerView={1}
-                    navigation
                 >
                     <SwiperSlide>
-                        <div className="h-screen flex items-start pt-10">
+                        <div className="h-dvh flex items-start pt-10">
                             <div className="p-1">
                                 {paragraphs.map((text, index) => (
                                     <p
                                         key={index}
-                                        className="font-serif text-[16pt] md:text-[20pt] text-gray-700 p-1 pr-10 ml-12"
+                                        className="font-serif text-xl text-gray-700 p-1 pr-10 ml-12"
                                     >
                                         {text}
                                     </p>
@@ -53,7 +50,7 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className="h-screen">
+                        <div className="h-dvh">
                             <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
                         </div>
                     </SwiperSlide>
