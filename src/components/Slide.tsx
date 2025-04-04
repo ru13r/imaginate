@@ -43,6 +43,11 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
                     fadeEffect={{crossFade: true}}
                 >
                     <SwiperSlide>
+                        <div className="h-dvh">
+                            <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
+                        </div>
+                    </SwiperSlide>
+                    <SwiperSlide>
                         <div className="flex items-start">
                             <div>
                                 {paragraphs.map((text, index) => (
@@ -54,11 +59,6 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
                                     </p>
                                 ))}
                             </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="h-dvh">
-                            <img src={`${image}`} alt={image} className="h-full w-full object-cover" />
                         </div>
                     </SwiperSlide>
                 </Swiper>
