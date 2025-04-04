@@ -1,5 +1,8 @@
 import * as React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import {EffectFade} from "swiper/modules";
+import 'swiper/css';
+import 'swiper/css/effect-fade';
 
 type SlideProps = {
     image: string;
@@ -32,8 +35,12 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
             {/* Mobile layout: use a nested Swiper */}
             <div className="h-dvh lg:hidden">
                 <Swiper
+                    modules={[EffectFade]}
                     spaceBetween={0}
                     slidesPerView={1}
+                    effect={'fade'}
+                    speed={1000}
+                    fadeEffect={{crossFade: true}}
                 >
                     <SwiperSlide>
                         <div className="h-dvh flex items-start pt-10">
@@ -41,7 +48,7 @@ const Slide: React.FC<SlideProps> = ({ paragraphs, image }) => {
                                 {paragraphs.map((text, index) => (
                                     <p
                                         key={index}
-                                        className="font-serif text-xl text-gray-700 p-1 pr-10 ml-12"
+                                        className="font-serif text-lg lg:text-xl text-gray-700 p-1 pr-10 ml-12"
                                     >
                                         {text}
                                     </p>
